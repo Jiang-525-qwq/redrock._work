@@ -1,0 +1,164 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+    background-color: white;
+}
+
+.max {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+
+.direction {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    z-index: 1000;
+}
+
+.direction a {
+    color: #333;
+    text-decoration: none;
+    margin: 0 8px;
+    font-size: 13px;
+    display: inline-block;
+}
+
+.direction a:hover {
+    color: #3388ff;
+}
+
+.more {
+    background-color: #4e6ef2;
+    color: white;
+    border: 0;
+    padding: 5px 12px;
+    border-radius: 3px;
+    font-size: 13px;
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+
+.searchbig {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    min-height: 60vh;
+    margin-top: -50px; 
+}
+
+
+.logo {
+    margin-bottom: 30px;
+}
+
+.logo img {
+    width: 270px;
+    height: 129px;
+}
+
+
+.search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+input {
+    width: 520px;
+    height: 40px;
+    padding: 0 15px;
+    border: 2px solid #4e6ef2;
+    border-right: none;
+    border-radius: 10px 0 0 10px;
+    font-size: 16px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.baidu {
+    background-color: #4e6ef2;
+    color: white;
+    border: 0;
+    width: 120px;
+    height: 44px;
+    border-radius: 0 10px 10px 0;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.baidu:hover {
+    background-color: #4662d9;
+}
+
+.low {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f5f5f5;
+    padding: 15px 0;
+    text-align: center;
+    z-index: 1000;
+    border-top: 1px solid #e0e0e0;
+}
+
+.qr-code {
+    margin-bottom: 10px;
+}
+
+.qr-code img {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 8px;
+}
+
+.qr-code h5 {
+    margin: 3px 0;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.shallow {
+    color: #999;
+    font-size: 12px;
+}
+
+.low-direction {
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.low-direction p {
+    margin: 3px 0;
+    color: #999;
+}
+
+.low-direction a {
+    color: #999;
+    text-decoration: none;
+    margin: 0 8px;
+}
+
+.low-direction a:hover {
+    color: #3388ff;
+}
+
+.spacer {
+    display: none;
+}
+
+.logo, .search, .qr-code {
+    flex-grow: 0;
+}

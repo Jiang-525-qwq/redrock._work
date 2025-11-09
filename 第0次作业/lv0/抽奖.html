@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 400px;
+            height: 300px;
+            background-image: url('https://ts1.tc.mm.bing.net/th/id/R-C.9b27fc6cde0abe773676f50bbfa4c3b2?rik=c8pMAksSREVciQ&riu=http%3a%2f%2fimg.touxiangkong.com%2fimages%2f03%2f1710123171459541.jpg&ehk=SdfZ6CZLHNbJXJuyv2NC1sSFeUDwAUrxCByG68260DU%3d&risl=&pid=ImgRaw&r=0');
+            padding: 20px;
+            background-size:cover ;
+            margin-top: auto;
+            text-align: center;
+        }
+        .box>div>div{
+            flex-direction: column;
+            text-align: center;
+            margin-top: 7%;
+            color:
+        }
+        .title{
+            font-size: larger;
+            font-weight:bold ;
+        }
+        .button{
+            background-color: rgb(129, 255, 213);
+        }
+        .cover{
+            background: rgba(255, 255, 255,0.3);
+            width:370px;
+            height: 270px;
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="box">
+        <div class="cover">
+        <div class="title">年会抽奖</div>
+        <div>一等奖：<span class="first"></span></div>
+        <div>二等奖：<span class="second"></span></div>
+        <div>三等奖：<span class="third"></span></div>
+        <div><button id="re">重新抽奖</button></div>
+    </div>
+</div>
+    <script>
+        alert('开始抽奖咯')
+        let oldpeople=[]
+        let people=[]
+        let n=Number(prompt('请输入参与抽奖的人数：'))
+        for(let i=0;i<n;i++){
+            oldpeople.push(prompt(`请输入第${i+1}个人的姓名`))
+        }
+        function draw(){
+            for(let i=0;i<n;i++){
+            people[i]=oldpeople[i]
+        }
+        let a=Math.floor(Math.random()*people.length)
+        const first=document.querySelector('.first')
+        console.log(first)
+        first.innerHTML=`${people[a]}`
+        people.splice(a,1)
+        let b=Math.floor(Math.random()*people.length)
+        const second=document.querySelector('.second')
+        console.log(second)
+        second.innerHTML=`${people[b]}`
+        people.splice(b,1)
+        let c=Math.floor(Math.random()*people.length)
+        const third=document.querySelector('.third')
+        console.log(third)
+        third.innerHTML=`${people[c]}`
+        }
+        draw()
+        const re=document.querySelector('#re')
+        console.log(re);
+        re.addEventListener('click',draw)
+    </script>
+</body>
+</html>

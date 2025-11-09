@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATM机</title>
+</head>
+<body>
+    <script>
+        let money=0
+        while(true){
+        let a=prompt('请选择你要进行的操作:\n1.查看余额\n2.存钱\n3.取钱\n4.退出')
+        if(a==='4'){break}
+        switch(a){
+            case '1':alert(money)
+            continue
+            case '2': let b=Number(prompt('请输入存储的数额：'))
+            money+=b
+            continue
+            case '3': while(true){
+                let c=Number(prompt('请输入取出的数额：'))
+            if(c<=money){
+            money-=c
+            break}
+            else{alert('您的余额不足，请重新输入')
+                continue
+            }}
+            default:alert('您的输入有误，请输入1-4之间的数字')
+        }
+        }
+
+    </script>
+</body>
+</html>

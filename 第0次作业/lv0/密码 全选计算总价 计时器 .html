@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <span>设置密码<input type="password" value=""><button>看</button>
+        </span>
+    </div>
+    <div>
+        <table>
+            <tr><td><input type="checkbox" class="all" checked>全选</td><td>商品</td><td>商家</td><td>价格</td></tr>
+            <tr><td><input type="checkbox" class="single"></td><td>1斤黄金</td><td>波波</td><td class="value">135500</td></tr>
+            <tr><td><input type="checkbox" class="single"></td><td>水果16pro 256g</td><td>波波</td><td class="value">6999</td></tr>
+            <tr><td><input type="checkbox" class="single"></td><td>小米su7</td><td>波波</td><td class="value">299900</td></tr>
+        <tr><td>总价</td><td class="allValue"></td></tr>
+        </table>
+    </div>
+    <div>
+        <ul>
+            <li id="timer"></li>
+        </ul>
+    </div>
+
+    <script>
+        //密码加密
+        const uname=document.querySelector('input')
+        const eye=document.querySelector('button')
+        function see(){
+            if(uname.type==="text"){
+                uname.type="password"
+                eye.innerText='看'
+            }else{
+                uname.type="text"
+                eye.innerText='不看'
+            }
+        }
+        eye.addEventListener('click',see)
+        //全选
+        const all=document.querySelector('.all')
+        const singles=document.querySelectorAll('.single')
+        all.checked=false
+        all.onclick=function(){
+            //设置勾选操作
+            const isallchecked=this.checked
+            for(let i=0;i<singles.length;i++){
+                const single=singles[i]
+                single.checked=isallchecked
+            }
+            calculate()
+        }
+        //勾选总价
+        const values=document.querySelectorAll('.value')
+        const allValue=document.querySelector('.allValue')
+        allValue.textContent=0
+        //计算总价函数
+        function calculate(){
+            let total=0
+            for(let i=0;i<singles.length;i++){
+                const single=singles[i]
+                if(singles[i].checked){
+                    total+=parseFloat(values[i].textContent)
+                }
+            }
+            allValue.textContent=total
+
+        }
+        //单选刷新总价
+        for(let i=0;i<singles.length;i++){
+            singles[i].addEventListener('click',calculate)
+        }
+
+    
+        
+        //计时器
+        const tm = document.getElementById('timer')
+        let i=1
+        let t
+        function time(){
+            tm.innerHTML=`${i}`
+            if(i===10){
+            clearInterval(t)
+        }
+        i++
+        }
+        t=setInterval(time,1000)
+    </script>
+</body>
+</html>

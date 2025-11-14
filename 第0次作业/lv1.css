@@ -1,0 +1,28 @@
+.box{
+    background-color: pink;
+    width: 120px;
+    height: 100px;
+}
+.input1{
+    width: 300px;
+}
+input{
+    color: grey;
+}
+table{
+
+    border-collapse: collapse;
+}
+img{
+    height: 120px;
+    width: 90px;
+}
+tr{
+    width: 400px;
+    height: 40px;
+}
+td{
+    border:1px,solid, black ;
+    vertical-align: middle;
+    text-align: center;
+}

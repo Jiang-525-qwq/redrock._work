@@ -1,0 +1,38 @@
+body{
+    display: flex;
+    flex-direction: row;
+    align-items:center ;
+    gap:20px;
+}
+div{
+    padding: 5px;
+    text-indent: 5px;
+    border-radius: 15px;
+    color: azure;
+}
+.box1{
+    width: 320px;
+    height: 500px;
+    background-color: #74a1d1;
+    flex-shrink: 0;
+}
+.box2{
+    width: 320px;
+    height: 300px;
+    background-color: rgb(125, 170, 155);
+    flex-shrink: 1;
+    flex-grow: 2;
+}
+.box3{
+    width: 320px;
+    height: 100px;
+    background-color: rgb(192, 169, 141);
+    flex-shrink: 1;
+    align-self: flex-start;
+}
+.box4{
+    width: 320px;
+    height: 600px;
+    background-color: rgb(181, 125, 124);
+    flex-shrink: 2;
+}

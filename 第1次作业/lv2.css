@@ -1,0 +1,136 @@
+.page{
+    width: 435px;
+    height: 660px;
+    background-color: rgba(255, 206, 206, 0);
+    text-align: center;
+    vertical-align: middle;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.QRCode{
+    position: relative;
+    left: 0;
+}
+
+.middle{
+    background-color: rgba(0, 255, 255, 0);
+    margin-top:0px ;
+    text-align: center;
+    vertical-align: middle;
+    height: auto;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.up{
+    display: flex;
+    justify-content: space-between;
+    align-self: flex-start;
+    width: 100%;
+    background-color: rgba(69, 69, 69, 0);
+}
+input:focus, select:focus {
+    outline: none;
+}
+
+input{
+    border: 0cap;
+    height: 25px;
+}
+select{
+    border: 0cap;
+    height: 25px;
+}
+table{
+    color: #a1a1a1;
+    border:1px solid rgb(201, 201, 201);
+    background-color: rgba(0, 0, 255, 0);
+    width: 300px;
+    line-height: 50px;
+    font-size: 20px;
+    margin:0 auto;
+    padding: 0%;
+    border-spacing: 0cap;
+    text-indent: 2px;
+}
+td{
+    border:1px solid rgb(109, 109, 109);
+    color: #7a7a7a;
+}
+table input{
+    width: 98%;
+    box-sizing: border-box;
+    min-width: 0;
+    height: 40px;
+    vertical-align: middle;
+}
+.log{
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+    background-color: #b0c9ff00;
+    margin:0 auto ;
+    align-items: baseline;
+    font-size: 14px;
+    line-height: 1.4;
+}
+.log label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0;
+}
+.log input{
+    vertical-align: middle;
+    margin: 0;
+    transform: translateY(-1px);
+}
+.log a{
+    text-decoration: none;
+    color: #2e58b3;
+}
+.login{
+    width: 70%;
+    height: 40px;
+    background-color: #d81616;
+    color: aliceblue;
+    border: 0px;
+    font-size: 20px;
+    border-radius: 5px;
+}
+.regist{
+    font-size: 20px;
+    color: #3f3f3f;
+}
+.logway img{
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+}
+.logway{
+    background-color: #2e58b300;
+    width: 70%;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap:48.15px;
+    margin: 0 auto;
+}
+.low{
+color: #a1a1a1;
+align-items: baseline;
+    font-size: 14px;
+    line-height: 1.4;
+}
+.low a{
+    text-decoration: none;
+    color: #2e58b3;
+}
+.low input{
+    vertical-align: middle;
+    margin: 0;
+    transform: translateY(-1px);
+}

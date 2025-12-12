@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="lv2.css">
+</head>
+<body>
+    <div class="menu">
+        <button onclick="choose(this)">歌曲列表</button>
+        <button class="comment" onclick="choose(this)">评论(0)</button>
+        <button onclick="choose(this)">收藏者</button>
+        <div class="underline"></div>
+    </div>
+    <div id="comment-section">
+    <textarea type="text" class="commentPlace" placeholder="请输入评论"></textarea>
+    <div class="comment-zone">
+        <span class="items">
+            <button onclick="insertSymbol('#')">#</button>
+            <button onclick="insertSymbol('@')">@</button>
+            <button onclick="insertSymbol('😊')">😊</button>
+
+        </span>
+        <span>
+            <button class="comment-button" onclick="handleCommentClick()">评论</button>
+        </span>
+    </div>
+    <div class="comment-list" id="comment-list">
+        <p class="no-comment">还没有评论，快来抢沙发</p>
+    </div>
+</div>
+
+    </div>
+<div id="user-modal" class="user-modal">
+    <div class="modal-content">
+        <h3>请选择昵称与头像</h3>
+
+        <label>昵称：</label>
+        <input type="text" id="nickname-input" placeholder="请输入昵称">
+
+        <p>选择头像：</p>
+        <div class="avatar-select">
+            <img src="头像\草帽.jpg" onclick="chooseAvatar(this)">
+            <img src="头像\枫叶.jpg" onclick="chooseAvatar(this)">
+            <img src="头像\眼镜.jpg" onclick="chooseAvatar(this)">
+        </div>
+
+        <button class="modal-btn" onclick="confirmUserInfo()">确定</button>
+    </div>
+</div>
+<div id="delete-menu" class="delete-menu">
+    <button onclick="deleteComment()">删除</button>
+</div>
+
+    <script>
+    const underline = document.querySelector(".underline");
+    const buttons = document.querySelectorAll(".menu button");
+    const commentBtn=document.querySelector(".comment");
+    const commentInput=document.querySelector(".commentPlace");
+    const commentList=document.getElementById("comment-list");
+    const commentSection = document.getElementById("comment-section");
+    const emptySection = document.getElementById("empty-section");
+
+    window.onload = () => {
+        choose(document.querySelector(".comment"));
+    };
+
+    let commentCount=0;
+    let userAvatar = "";
+    let userNickname = "";
+    let userInfoSet = false;
+    let currentComment = null; // 被右键选中的评论项
+
+// 显示删除菜单
+function showDeleteMenu(x, y, commentItem) {
+    const menu = document.getElementById("delete-menu");
+    currentComment = commentItem;
+
+    menu.style.left = x + "px";
+    menu.style.top = y + "px";
+    menu.style.display = "block";
+}
+
+// 点击删除
+function deleteComment() {
+    if (currentComment) {
+        currentComment.remove();  // 删除 DOM 节点
+
+        // ⭐ 评论数减 1（但不能小于 0）
+        commentCount = Math.max(0, commentCount - 1);
+
+        // ⭐ 更新 评论(n)
+        updateCommentCount();
+
+        // ⭐ 如果评论区为空，显示“还没有评论”
+        if (commentList.children.length === 0) {
+            const p = document.createElement("p");
+            p.className = "no-comment";
+            p.textContent = "还没有评论，快来抢沙发";
+            commentList.appendChild(p);
+        }
+
+        currentComment = null;
+    }
+
+    // 隐藏菜单
+    document.getElementById("delete-menu").style.display = "none";
+}
+
+
+// 点击其他区域隐藏菜单
+document.addEventListener("click", () => {
+    document.getElementById("delete-menu").style.display = "none";
+});
+
+    function choose(btn) {
+
+    buttons.forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    const rect = btn.getBoundingClientRect();
+    const parentRect = btn.parentNode.getBoundingClientRect();
+    underline.style.left = (rect.left - parentRect.left) + "px";
+    underline.style.width = rect.width + "px";
+
+
+    const text = btn.textContent;
+
+    if (text.includes("评论")) {
+        commentSection.style.display = "block";
+        emptySection.style.display = "none";
+    } else {
+        commentSection.style.display = "none";
+        emptySection.style.display = "block";
+    }
+}
+
+    function handleCommentClick() {
+    if (!userInfoSet) {
+        document.getElementById("user-modal").style.display = "flex";
+        return;
+    }
+    submitComment(); 
+}
+    function chooseAvatar(img) {
+    document.querySelectorAll(".avatar-select img")
+        .forEach(i => i.classList.remove("selected"));
+    img.classList.add("selected");
+    userAvatar = img.src;
+}
+    function confirmUserInfo() {
+    const nicknameInput = document.getElementById("nickname-input").value.trim();
+
+    if (!nicknameInput || !userAvatar) {
+        alert("请填写昵称并选择头像");
+        return;
+    }
+
+    userNickname = nicknameInput;
+    userInfoSet = true;
+
+    document.getElementById("user-modal").style.display = "none";
+    alert("用户信息设置成功！现在可以评论了");
+}
+
+    function submitComment(){
+        const text=commentInput.value.trim();
+        if(!text){
+            alert('评论内容不能为空');
+            return;
+        }
+        alert('评论成功！');
+
+        commentCount++;
+
+        updateCommentCount();
+
+        addCommentToList(text);
+
+        commentInput.value="";
+    }
+
+    function updateCommentCount(){
+        commentBtn.textContent=`评论(${commentCount})`;
+    }
+
+    function addCommentToList(text){
+    const noComment = document.querySelector(".no-comment");
+    if(noComment){
+        noComment.remove();
+    }
+
+    const item = document.createElement("div");
+    item.className = "comment-item";
+
+    const now = new Date();
+    const time = now.getHours() + ":" + String(now.getMinutes()).padStart(2,"0");
+
+    item.innerHTML = `
+        <div class="avatar">
+            <img src="${userAvatar}" style="width:40px;height:40px;border-radius:50%">
+        </div>
+        <div class="comment-content">
+            <div class="comment-header">${userNickname} · ${time}</div>
+            <div class="comment-text">${text}</div>
+        </div>
+    `;
+
+
+    item.addEventListener("contextmenu", function (e) {
+        e.preventDefault(); 
+        showDeleteMenu(e.pageX, e.pageY, item);
+    });
+
+    commentList.prepend(item);
+}
+
+    function insertSymbol(symbol) {
+    const input = commentInput;  
+    const start = input.selectionStart; 
+    const end = input.selectionEnd;   
+    const text = input.value;
+
+
+    input.value = text.slice(0, start) + symbol + text.slice(end);
+
+
+    const cursor = start + symbol.length;
+    input.setSelectionRange(cursor, cursor);
+
+
+    input.focus();
+}
+
+    </script>
+</body>
+</html>

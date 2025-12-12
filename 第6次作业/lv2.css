@@ -1,0 +1,149 @@
+.menu {
+    position: relative;
+    display: flex;
+    gap: 20px;
+    padding: 10px 0;
+}
+
+.menu button {
+    background: transparent;
+    font-size: 16px;
+    border: none;
+    padding-bottom: 8px;
+    cursor: pointer;
+}
+
+.menu button.active {
+    font-weight: 600;
+}
+
+.underline {
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    width: 60px;
+    background-color: brown;
+    transition: 0.3s;
+    left: 0;
+}
+.commentPlace{
+    margin-top: 20px;
+    border: 1.5px grey solid;
+    height: 50px;
+    width: 100%;
+}
+.items button{
+    width: 25px;
+    height: 25px;
+    background: transparent;
+    border: 0;
+}
+.comment-button{
+    width: 50px;
+    height: 25px;
+    background: transparent;
+    border: 1.5px solid rgb(114, 114, 114);
+    border-radius: 15px;
+    background-color: rgb(251, 253, 255);
+}
+.comment-zone{
+    display: flex;
+    justify-content: space-between;
+}
+.comment-list {
+    margin-top: 20px;
+    width: 100%;
+    font-size: 14px;
+}
+
+.comment-item {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    background: #ccc;
+    border-radius: 50%;
+}
+
+.comment-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.comment-header {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.no-comment {
+    color: #888;
+    text-align: center;
+}
+.empty-section {
+    display: none;
+    height: 200px; 
+}
+
+.user-modal {
+    display: none;              /* 默认隐藏 */
+    position: fixed;            /* 覆盖屏幕 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4); /* 半透明遮罩 */
+    justify-content: center;
+    align-items: center;
+    z-index: 999;               /* 确保在最上层 */
+}
+.delete-menu {
+    position: absolute;
+    display: none;
+    background: white;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    border-radius: 4px;
+    z-index: 999;
+}
+
+.delete-menu button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: rgb(54, 54, 54);
+}
+
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    width: 300px;
+    border-radius: 10px;
+}
+
+.avatar-select img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin: 5px;
+    cursor: pointer;
+    border: 2px solid transparent;
+}
+
+.avatar-select img.selected {
+    border-color: brown;
+}
+
+.modal-btn {
+    padding: 8px 15px;
+    margin-top: 15px;
+    border: none;
+    background-color: brown;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}

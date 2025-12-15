@@ -70,9 +70,8 @@
     let userAvatar = "";
     let userNickname = "";
     let userInfoSet = false;
-    let currentComment = null; // 被右键选中的评论项
+    let currentComment = null; 
 
-// 显示删除菜单
 function showDeleteMenu(x, y, commentItem) {
     const menu = document.getElementById("delete-menu");
     currentComment = commentItem;
@@ -82,18 +81,14 @@ function showDeleteMenu(x, y, commentItem) {
     menu.style.display = "block";
 }
 
-// 点击删除
 function deleteComment() {
     if (currentComment) {
-        currentComment.remove();  // 删除 DOM 节点
+        currentComment.remove(); 
 
-        // ⭐ 评论数减 1（但不能小于 0）
         commentCount = Math.max(0, commentCount - 1);
 
-        // ⭐ 更新 评论(n)
         updateCommentCount();
 
-        // ⭐ 如果评论区为空，显示“还没有评论”
         if (commentList.children.length === 0) {
             const p = document.createElement("p");
             p.className = "no-comment";
@@ -104,12 +99,10 @@ function deleteComment() {
         currentComment = null;
     }
 
-    // 隐藏菜单
     document.getElementById("delete-menu").style.display = "none";
 }
 
 
-// 点击其他区域隐藏菜单
 document.addEventListener("click", () => {
     document.getElementById("delete-menu").style.display = "none";
 });

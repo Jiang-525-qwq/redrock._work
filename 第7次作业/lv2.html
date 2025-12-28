@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+      div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 400px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <h1>蒙马特遗书</h1>
+      <p id="text"></p>
+    </div>
+    <script>
+      const text = `我其实没有“选择”的余地，
+        遇到你的那一刻，那命运就掉下来了，
+        一秒钟也不容我“选择”`;
+      const output = document.getElementById('text');
+      let i = 0;
+
+      function type() {
+        if (i < text.length) {
+          output.textContent += text[i];
+          i++;
+          setTimeout(type, 100);
+        }
+      }
+
+      type();
+    </script>
+  </body>
+</html>

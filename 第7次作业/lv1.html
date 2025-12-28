@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+      div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 400px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <h1>绝色--余光中</h1>
+      <div id="text"></div>
+    </div>
+    <script>
+      const lines = [
+        `美丽而善变的巫娘`,
+        `那月亮`,
+        `翻译是她的特长`,
+        `却把世界译走了样`,
+        `把太阳的镕金译成了流银`,
+        `把烈火译成了冰`,
+        `而且带点薄荷的风味`,
+        `凡尝过的人都说`,
+        `译文是全不可靠`,
+        `但比起原文来呢`,
+        `却更加神秘`,
+        `更加美`,
+        `雪是另一位唯美的译者`,
+        `存心把世界译错`,
+        `或者译对`,
+        `诗人说`,
+        `只因原文本来就多误`,
+        `所以每当雪姑`,
+        `乘着六瓣的降落伞`,
+        `在风里飞旋地降临`,
+        `这世界一夜之间`,
+        `比革命更彻底`,
+        `竟变得如此白净`,
+        `若逢新雪初霁`,
+        `满月当空`,
+        `下面平铺着皓影`,
+        `上面流转着亮银`,
+        `而你带笑地向我步来`,
+        `月色与雪色之间`,
+        `你是第三种绝色`,
+        `不知月色加反光的雪色`,
+        `该如何将你的本色`,
+        `——已经够出色的了`,
+        `全译成更绝的艳色？`,
+      ];
+      const output = document.getElementById('text');
+      let lineIndex = 0;
+      let charIndex = 0;
+      let currentP = null;
+
+      function type() {
+        if (lineIndex >= lines.length) return;
+
+        if (charIndex === 0) {
+          currentP = document.createElement('p');
+          output.appendChild(currentP);
+        }
+
+        const currentLine = lines[lineIndex];
+
+        if (charIndex < currentLine.length) {
+          currentP.textContent += currentLine[charIndex];
+          charIndex++;
+
+          setTimeout(type, 80);
+        } else {
+          lineIndex++;
+          charIndex = 0;
+
+          setTimeout(type, 300);
+        }
+      }
+
+      type();
+    </script>
+  </body>
+</html>

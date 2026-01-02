@@ -1,0 +1,66 @@
+1.网络请求
+    1.1 过程:DNS解析、TCP三次握手、建立TCP连接发出HTTP请求、服务器响应HTTP请求、浏览器解析html源码、请求html代码中的资源、浏览器渲染页面并呈现。
+    1.2 URL:统一资源定位符(uniform resource locater) 
+          格式:<协议>://<主机>:<端口>/<路径>(HTTP默认端口为80)
+    1.3 DNS解析:域名系统(domain name system)由多个服务器组成，存储域名和ip地址的映射的系统
+    1.4 HTTP请求:超文本传输协议(HyperText Transfer Protocol) 所有www文件遵守的标准
+        1.4.1 头信息：(域名：域值)
+                通用头:可请求可响应，作为整体
+                请求头:客户端传递关于自身的信息和希望的响应形式
+                响应头:服务器英语传递自身信息的响应
+                实体头:可请求可响应，定义被传送资源的信息。
+    1.5 网络请求类型：
+            GET---请求网络指定位置的资源
+            POST---向服务器提交数据请求服务器数据处理
+            PUT---向网络指定位置上传资源
+            DELETE---请求服务器删除url标识的资源
+
+            HEAD---只请求响应头部
+            TRACE---回显服务器收到的请求，主要用于测试诊断
+            PATCH---实体中包含一个表,表中说明与该url所表示的原内容的区别
+            MOVE---请求服务器将指定页面移至另一个网络地址
+            COPY---请求服务器将指定页面拷贝至另一个网络地址
+            LINK---请求服务器建立连接关系
+            UNLINK---断开链接关系
+        1.5.1 fetch
+            //配置对象
+            const config={
+                method:"get"
+                headers:{}//请求头
+                body:{}//请求传递的参数
+            }
+            //发起请求
+            fetch(url,config)
+                .tehn(res=>res.json())
+        1.5.2 请求体格式
+            JSON格式：application/json，在客户端和服务器之间传输数据的轻量级数据交换格式
+            Form表单格式：application/x-www-form-urlencoded或multipart/form-data格式发送表单数据
+            XML格式：text/xml一种用于传输和存储数据的标记语言
+            二进制格式：用于传输图片、音频、视频等二进制数据的格式
+        1.5.3 状态码 表示特点的请求是否已成功完成
+            信息响应（100-199）
+            成功响应（200-299）
+            200 ok
+            重定向（300-399）
+            301 moved permanently
+            302 found
+            客户端错误（400-499）
+            403 forbiddenext
+            404 not found
+            服务器错误（500-599）
+2.本地存储
+    2.1 cookies 服务器发送到用户浏览器并保存在本地的一小块数据 会在浏览器下次在同一服务器再次发起请求时被携带并且发送到服务器上
+        2.1.1 cookie作用
+            会话状态管理
+            个性化设置
+            浏览器行为跟踪
+    2.2 localStorage常用方法 点调用
+        setItem（key，value）--存储键值对
+        getItem（key）--按键获取值
+        removeItem（key）--删除键值
+        clear（）--清除所有数据
+        key（index）--获取该索引下的键名
+        length--存储内容长度
+    2.3 indexDB 用于在客户端存储大量的结构化数据 使用索引实现对数据的高性能搜索
+3.CORS 跨源资源共享
+    跨域：协议、主机、端口有一个不同

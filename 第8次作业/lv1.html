@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const apiKey = 'daf04c454bc877cc27f722d444a2ee6f';
+      const cityName = 'Chongqing';
+      fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric&lang=zh_cn`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(`温度：${data.main.temp}°C`);
+          console.log(`天气状况：${data.weather[0].description}`);
+        });
+    </script>
+  </body>
+</html>

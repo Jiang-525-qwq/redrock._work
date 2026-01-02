@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>创建 GitHub 仓库</title>
+  </head>
+  <body>
+    <script>
+      const token = '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';
+      const url = 'https://api.github.com/user/repos';
+      const requestOptions = {
+        method: 'POST',
+        headers: {
+          Authorization: `token ${token}`,
+          'Content-Type': 'application/json',
+          Accept: 'application/vnd.github.v3+json',
+        },
+        body: JSON.stringify({
+          name: 'MyProject',
+          description: 'This is a new repository created via GitHub API.',
+          private: false,
+          auto_init: true,
+        }),
+      };
+
+      fetch(url, requestOptions)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log('仓库创建成功！');
+          console.log('响应数据：', data);
+          console.log('仓库 SSH URL:', data.ssh_url);
+          console.log('仓库 HTTPS URL:', data.clone_url);
+        })
+        .catch((error) => {
+          console.error('创建仓库时发生错误：', error);
+        });
+    </script>
+  </body>
+</html>
